@@ -1,0 +1,56 @@
+-------------------------------
+---------- STUDIOWEB ----------
+-------------------------------
+
+
+> INTALLATION GUIDE
+
+
+A. USING ZIP FILE
+------------------
+
+1. Unzip the package and paste it into you WAMP or XAMPP location.
+2. Create a new database named studioweb in phpmyadmin, and then import 
+   the studioweb.sql file into the new database.
+3. Open the application/config/config.php file with a text editor.
+4. Set base url and SITE_PATH as a 'http://localhost/studioweb3/' 
+   (Here we assume project is inside studioweb3).
+5. Now for configure database, got to application/config/database.php 
+   and configure like below.
+   $db['local']['hostname'] = 'localhost';
+   $db['local']['username'] = 'YOUR_DATABASE_USERNAME'; 
+   $db['local']['password'] = 'YOUR_DATABASE_PASSWORD';
+   $db['local']['database'] = 'studioweb';
+6. check http://localhost/studioweb3 site on your browser, 
+   if css is missing then use following code for you .htaccess file,
+   which is ocated on root path. 
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /studioweb3/
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond $1 ^(index\.php|images|robots\.txt|css|docs|js|system)
+    RewriteRule resources/(.*)$ public_html/resources/$1 [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+   # RewriteCond $1 !^(index\.php|images|robots\.txt|css|docs|js|system)
+    RewriteRule ^(.*)$ /studioweb3/index.php?/$1 [L]
+</IfModule>
+7. And now you good to go!
+
+
+
+B. USING GIT CLONE
+------------------
+1. Make sure you have been invited has invited you to collaborate on the
+   killersites/tutor repository.
+2. Create SSH key
+   https://confluence.atlassian.com/bitbucketserver/creating-ssh-keys-776639788.html
+3. Add SSH key to your github account.
+   https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+4. Open git scm terminal.
+5. Hit clone git@github.com:killersites/StudioWeb3.git
+6. Follow above instructions from step2.
+
